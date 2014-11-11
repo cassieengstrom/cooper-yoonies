@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+      var map;
+      var initialize = function() {
+        var mapOptions = {
+          zoom: 19,
+          center: new google.maps.LatLng(40.7293, -73.9906)
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+
+        var myLatlng = new google.maps.LatLng(40.7293, -73.9906);
+
+        //cooper union
+          var position = new google.maps.LatLng(40.7291, -73.9906);
+          
+
+          var markerOptions = {
+              position: position,
+              map: map,
+              title:"Hello World",
+              icon: 'https://pbs.twimg.com/profile_images/457985900/CU_Logo_Twitter_normal.jpg' //url to images
+          };
+
+          // To add the marker to the map, use the 'map' property
+          var marker = new google.maps.Marker(markerOptions);
+
+        //starbucks
+          var starbucksPosition = new google.maps.LatLng(40.730007, -73.991638);
+
+          var starbucksMarkerOptions = {
+              position: starbucksPosition,
+              map: map,
+              title:"Hello Starbucks",
+              icon: 'https://media.licdn.com/mpr/mpr/shrink_40_40/p/6/005/04b/30a/3e3f7dd.png' //url to images
+          };
+
+           // To add the marker to the map, use the 'map' property
+                    var starbucksMarker = new google.maps.Marker(starbucksMarkerOptions);
+
+          //Kanye's penthouse
+
+           var kanyeposition = new google.maps.LatLng(40.729683, -73.9912505);
+    
+
+          var kanyemarkerOptions = {
+              position: kanyeposition,
+              map: map,
+              title:"Kanye's Penthouse",
+              icon: 'http://pbs.twimg.com/profile_images/437529786651406336/kjRMkU-b_normal.jpeg' //url to images
+          };
+
+           // To add the marker to the map, use the 'map' property
+                    var kanyemarker = new google.maps.Marker(kanyemarkerOptions);
+
+                     //Panya and Ryan Gosling
+
+           var goslingposition = new google.maps.LatLng(40.730075, -73.989217);
+          
+    
+
+          var goslingmarkerOptions = {
+              position: goslingposition,
+              map: map,
+              title:"R.Gosling coffeehouse/Japanese Bakery",
+              icon: 'pbs.twimg.com/profile_images/344513261583009515/05e5707758fba27e2d167430a0013310_normal.jpeg' //url to images
+          };
+
+           // To add the marker to the map, use the 'map' property
+                    var goslingmarker = new google.maps.Marker(goslingmarkerOptions);
+
+
+                //maybe Liam Neeson's favorite bar
+
+                    var barposition = new google.maps.LatLng(40.728788, -73.989669);
+          
+    
+
+          var barmarkerOptions = {
+              position: barposition,
+              map: map,
+              title:"Maybe Liam Neeson's favorite bar A.K.A Mc.Sorley's Irish Pub",
+              icon: 'http://www.flicksandbits.com/wp-content/uploads/2013/03/liam-neeson-01-64x64.jpg' //url to images
+          };
+
+           // To add the marker to the map, use the 'map' property
+                    var neesonmarker = new google.maps.Marker(barmarkerOptions);
+
+
+
+
+         
+
+
+
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
