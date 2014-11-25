@@ -1,0 +1,126 @@
+<!DOCTYPEhtml>
+    <html>
+        <head>
+
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+
+        <script>
+
+
+
+
+$(document).ready(function() {
+
+
+ var accounts = ['vicenews', 'huffpost', 'nowness', 'JoeMande', 'rollingstone', 'nba'];
+
+$.getJSON('http://cooper-union-search-proxy.herokuapp.com/user/search/' + accounts[i], function(twitterResponse){
+
+    
+   
+    var twitterPosts = [posts];
+    var twitterFollowers = [followers];
+   
+    for(var i = 0; i<accounts.length; i++) {
+
+                posts=(twitterResponse.followers_count)
+                followers = (twitterResponse.statuses_count)
+
+                //twitterFollowers.push(twitterResponse.followers_count);
+                //twitterPosts.push(twitterResponse.statuses_count);
+            };
+if(i = (accounts.length -1)) {
+               drawChart(twitterPosts, twitterFollowers);      
+                }
+     
+            });//closes get json
+           
+           
+    var drawChart = function(twitterPosts,TwitterFollowers) {
+        $(function(){
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'cyberfollowings'
+            },
+            xAxis: {
+                categories: [
+                    'POLITICS(Vicenews)',
+                    'SCIENCE(Huffingtonpostscience)',
+                    'ART(Nowness)',
+                    'COMEDY(Joe Mande)',
+                    'MUSIC(Rolling Stone)',
+                    'SPORTS(NBA)'
+                ]
+            },
+            yAxis: [{
+                min: 0,
+                title: {
+                    text: 'Followers'
+                }
+            }, {
+                title: {
+                    text: 'Media Count'
+                },
+                opposite: true
+            }],
+            legend: {
+                shadow: false
+            },
+            tooltip: {
+                shared: true
+            },
+            plotOptions: {
+                column: {
+                    grouping: false,
+                    shadow: false,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Instagram Posts',
+                color: 'rgba(165,170,217,1)',
+                data: [227, 869, 1173, 527, 695, 5559],
+                pointPadding: 0.3,
+                pointPlacement: -0.2
+            }, {
+                name: 'Twitter Posts',
+                color: 'rgba(12,400,134,.9)',
+                data: [twitterPosts],
+                pointPadding: 0.4,
+                pointPlacement: -0.2
+            }, {
+                name: 'Instagram Followers',
+                color: 'rgba(248,161,63,1)',
+                data: [166000,221000,73000,19000,583000,4000000],
+                pointPadding: 0.3,
+                pointPlacement: 0.2,
+                yAxis: 1
+            }, {
+                name: 'Twitter Followers',
+                color: 'rgba(186,60,61,.9)',
+                data: [twitterFollowers],
+                pointPadding: 0.4,
+                pointPlacement: 0.2,
+                yAxis: 1
+            }]
+        });
+    });
+});
+     
+     
+        
+  
+
+
+
+
+    </script>
+    </head>
+    <body>
+        <div id="container" style="height:1000px; margin: 0 auto"></div>
+    </body>
+</html>
